@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-# Create your views here.
+from django.shortcuts import render_to_response
+
 def index(request):
-    return HttpResponse("Hello, world. You're at HOME index.")
+    hora = "tot be"
+    return render_to_response('home/index.html',
+    {'fechahora_actual': hora})
