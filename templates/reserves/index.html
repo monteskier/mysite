@@ -1,0 +1,10 @@
+
+{% if list_ult_reserves %}
+    <ul>
+    {% for reserva in list_ult_reserves %}
+        <li><a href="/reserves/{{ reserva.id }}/">{{ reserva.objecte }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No hi han reserves actualment.</p>
+{% endif %}
