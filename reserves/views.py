@@ -7,9 +7,11 @@ def index(request):
     context = {'list_ult_reserves': list_ult_reserves}
     return render(request, 'reserves/index.html', context)
 
-def detail(request, reserva_id):
+def detail(request,  reserva_id):
     try:
         reserva = Reserva.objects.get(pk=reserva_id)
     except Reserva.DoesNotExist:
         raise Http404
     return render(request, 'reserves/detail.html', {'reserva': reserva})
+def actReserva(request):
+    pass

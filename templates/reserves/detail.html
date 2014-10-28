@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+<h1>{{ reserva.objecte }}</h1>
+{% block contingut %}
+<ul>
+    <li>{{ reserva.interessat }}</li>
+    <li>{{ reserva.sala }}</li>
+    <li>{{ reserva.data_inici }}</li>
+    <li>{{ reserva.data_final }}</li>
+    <li>{{ reserva.data_sol }}</li>
+</ul>
+{% endblock %}

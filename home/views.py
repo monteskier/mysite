@@ -1,6 +1,7 @@
 from django.shortcuts import render_to_response
+from django.template import RequestContext
 
 def index(request):
-    hora = "tot be"
-    return render_to_response('home/index.html',
-    {'fechahora_actual': hora})
+
+    return render_to_response('home/index.html')
+

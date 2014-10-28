@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>{% block title %}Reserves de material{% endblock %}</title>
-    <style>
-    nav{
+nav{
     width:100%
     background:# f0f0f0;
     border: 1px solid #ccc;
@@ -39,12 +34,3 @@ nav ul li a {
     color: #616161;
     padding: 10px 0;
 }
-</style>
-</head>
-<body>
-<h1 id="titol">{% block titol %} Benvingut a Reserves de Material{% endblock %}</h1>
-{% include "nav.html" %}
-{% block contingut %}{% endblock %}
-{% block peu %}<p>Un projecte fet per el S.I.D.</p>{% endblock %}
-</body>
-</html>

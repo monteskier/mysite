@@ -25,7 +25,12 @@ DEBUG = True
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
 TEMPLATE_DEBUG = True
+# Aqui en cuanto al las variables del static, para css y otros estaticos
 
+STATIC_ROOT = ''
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),)
 ALLOWED_HOSTS = []
 
 
@@ -40,7 +45,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'reserves',
     'home',
+
 )
+
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -87,5 +94,3 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
-
-STATIC_URL = '/static/'

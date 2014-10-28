@@ -1,10 +1,14 @@
-
+{% extends 'base.html' %}
+{% block contingut %}
 {% if list_ult_reserves %}
+
+    <h2>Reserves Actuals:</h2>
     <ul>
     {% for reserva in list_ult_reserves %}
-        <li><a href="/reserves/{{ reserva.id }}/">{{ reserva.objecte }}</a></li>
+        <li><a href="/reserves/{{ reserva.id }}/">{{ reserva.objecte }}</a> del {{reserva.data_inici}} fins {{reserva.data_final}}</li>
     {% endfor %}
     </ul>
 {% else %}
     <p>No hi han reserves actualment.</p>
 {% endif %}
+{% endblock %}
