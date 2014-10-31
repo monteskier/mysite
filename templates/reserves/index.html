@@ -1,7 +1,14 @@
 {% extends 'base.html' %}
+{% block login %}
+<section class="login">
+   <ul>
+       <li><a href="{% url 'signup' %}">Sign Up</a></li>
+       <li><a href="{% url 'ingresar' %}">Login</a></li>
+   </ul>
+</section>
+{% endblock %}
 {% block contingut %}
 {% if list_ult_reserves %}
-
     <h2>Reserves Actuals:</h2>
     <ul>
     {% for reserva in list_ult_reserves %}

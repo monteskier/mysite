@@ -39,12 +39,31 @@ nav ul li a {
     color: #616161;
     padding: 10px 0;
 }
+h1.titol{
+    text-align:center;
+}
+section.login{
+    float:right;
+    width:200px;
+    height:200px;
+    border-radius:10px;
+    background-color:#9999AA;
+    text-decoration:none;
+}
 </style>
 </head>
 <body>
-<h1 id="titol">{% block titol %} Benvingut a Reserves de Material{% endblock %}</h1>
+<h1 class="titol">{% block titol %} Benvingut a Reserves de Material{% endblock %}</h1>
+{% block login %}
+{% endblock %}
 {% include "nav.html" %}
 {% block contingut %}{% endblock %}
 {% block peu %}<p>Un projecte fet per el S.I.D.</p>{% endblock %}
+
+<script type="text/javascript">
+$(document).ready(){function
+
+});
+</script>
 </body>
 </html>
