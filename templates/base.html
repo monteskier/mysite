@@ -17,6 +17,17 @@ nav ul {
     padding: 0;
 }
 
+#item-menu{
+    height: 60px;
+    width: 100px;
+    border-radius: 5px;
+    background-color: #69D2E7;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: Verdana, Arial, Sans-Serif;
+    opacity: 0,5;
+}
+
 nav ul li {
     list-style: none;
     float: left;
@@ -42,12 +53,23 @@ nav ul li a {
 h1.titol{
     text-align:center;
 }
+
+footer{
+    text-align=center;
+    float=bottom;
+    margin-min-top:600px;
+    width:100%;
+
+}
 section.login{
+
+    color: #FFFFFF;
+    font-family: Verdana, Arial, Sans-Serif;
     float:right;
     width:200px;
     height:200px;
     border-radius:10px;
-    background-color:#9999AA;
+    background-color:#69D2E7;
     text-decoration:none;
 }
 </style>
@@ -55,15 +77,22 @@ section.login{
 <body>
 <h1 class="titol">{% block titol %} Benvingut a Reserves de Material{% endblock %}</h1>
 {% block login %}
+<section class="login">
+
+   <ul>
+       {% if not user.is_authenticated %}
+       <li><a href="{% url 'signup' %}">Registret</a></li>
+       <li><a href="{% url 'ingresar' %}">Entra</a></li>
+       {% elif user.is_authenticated %}
+       <li><a href="{% url 'logout' %}">Tenca la sessió</a></li>
+       {% endif %}
+
+   </ul>
+</section>
 {% endblock %}
 {% include "nav.html" %}
 {% block contingut %}{% endblock %}
-{% block peu %}<p>Un projecte fet per el S.I.D.</p>{% endblock %}
+{% block peu %}<footer><p>Un projecte fet per el S.I.D.</p></footer>{% endblock %}
 
-<script type="text/javascript">
-$(document).ready(){function
-
-});
-</script>
 </body>
 </html>

@@ -2,15 +2,6 @@ from django.db import models
 import datetime
 from django.contrib.auth.models import User
 
-
-
-# Create your models here.
-class Interessat(models.Model):
-    user = models.ForeignKey(User, unique=True)
-    telf = models.IntegerField()
-
-
-
 class Tipus(models.Model):
     nom = models.CharField(max_length=200)
 
@@ -42,7 +33,7 @@ class Salas(models.Model):
 
 class Reserva(models.Model):
     objecte = models.ForeignKey(Objecte)
-    interessat = models.ForeignKey(Interessat)
+    user = models.ForeignKey(User, unique=True)
     sala = models.ForeignKey(Salas)
     data_inici = models.DateField('Data inici')
     data_final = models.DateField('Data final')
