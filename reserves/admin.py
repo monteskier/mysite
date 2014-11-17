@@ -1,4 +1,4 @@
-from reserves.models import Objecte, Reserva, Tipus, Salas
+from models import Objecte, Reserva, Tipus, Salas
 from django.contrib import admin
 
 

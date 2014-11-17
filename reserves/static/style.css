@@ -1,0 +1,70 @@
+
+    nav{
+    width:100%;
+    background:# f0f0f0;
+}
+
+nav ul {
+
+    overflow: hidden;
+    border-bottom-color: #417690;
+    border-bottom-width: 100%;
+    border-bottom-style: solid;
+    border-radius:10px;
+
+}
+
+#item-menu{
+    height: 60px;
+    width: 100px;
+    opacity: 0.8;
+    border-radius: 5px;
+    background-color: #417690;
+    text-align: center;
+    font-family: Verdana, Arial, Sans-Serif;
+    opacity: 0,5;
+    color:white;
+    -webkit-transition: 0.5;
+    -transition:2s;
+    -moz-transition: 0.5s;
+}
+#item-menu:hover{
+    background-color:blue;
+}
+
+nav ul li {
+    list-style: none;
+    float: left;
+    text-align:center;
+    width:16%;
+    overflow: hidden;
+}
+nav ul li:first-child {
+
+    border-left: none;
+
+}
+nav ul li a {
+    display: block;
+    text-decoration: none;
+    font-family: Verdana, Arial, Sans-Serif;
+}
+h1.titol{
+    text-align:center;
+
+}
+
+footer{
+    text-align=center;
+    float=bottom;
+    margin-min-top:600px;
+    width:100%;
+
+}
+.login{
+    font-size:12px;
+    font-family: Verdana, Arial, Sans-Serif;
+    margin-right:10px;
+    float:right;
+}
+

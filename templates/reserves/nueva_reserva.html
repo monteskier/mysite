@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block titol %}<h1 align="center">Nova Reserva {{ nomuser }}</h1>{% endblock %}
+{% block contingut %}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script>
+    $(document).ready(function(){
+
+        $('#id_user option:eq({{usuario.id}})').prop('selected', true);
+        $('#id_user').prop('disabled',true);
+        $('#id_data_sol').prop('disabled', true);
+        $('#id_data_inici').datepicker({ dateFormat: 'dd/mm/yy' });
+        $('#id_data_final').datepicker({ dateFormat: 'dd/mm/yy' });
+
+
+
+    })
+</script>
+    <h2>Nova Reserva:</h2>
+    <script>
+    {% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-error">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-error">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+    </script>
+    <form id="formulario" method="POST" action="" >{% csrf_token %}
+        <table>
+
+        {% for field in formulario %}
+            <tr><td>
+            {{ field.name }}
+            </td><td>
+            {{ field }}
+            </td></tr>
+        {% endfor %}
+
+
+         </table>
+        <p><input type="submit" value="Reservar"></p>
+    </form>
+{% endblock %}

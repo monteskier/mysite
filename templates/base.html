@@ -1,94 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>{% block title %}Reserves de material{% endblock %}</title>
-    <style>
-    nav{
-    width:100%
-    background:# f0f0f0;
-    border: 1px solid #ccc;
-    border-right:none;
-}
-
-nav ul {
-
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-}
-
-#item-menu{
-    height: 60px;
-    width: 100px;
-    border-radius: 5px;
-    background-color: #69D2E7;
-    text-align: center;
-    color: #FFFFFF;
-    font-family: Verdana, Arial, Sans-Serif;
-    opacity: 0,5;
-}
-
-nav ul li {
-    list-style: none;
-    float: left;
-    text-align:center;
-    border-left:1px solid #fff;
-    border-right: 1px solid #ccc;
-    width:16%;
-    width: calc(100% /6);
-    box-sizing: border-box;
-    overflow: hidden;
-}
-nav ul li:first-child {
-
-    border-left: none;
-
-}
-nav ul li a {
-    display: block;
-    text-decoration: none;
-    color: #616161;
-    padding: 10px 0;
-}
-h1.titol{
-    text-align:center;
-}
-
-footer{
-    text-align=center;
-    float=bottom;
-    margin-min-top:600px;
-    width:100%;
-
-}
-section.login{
-
-    color: #FFFFFF;
-    font-family: Verdana, Arial, Sans-Serif;
-    float:right;
-    width:200px;
-    height:200px;
-    border-radius:10px;
-    background-color:#69D2E7;
-    text-decoration:none;
-}
-</style>
+<title>{% block title %}Reserves de material {% endblock %}</title>
+<script src=" {{ STATIC_URL }}jquery-2.1.1.js"></script>
+<link href="{{ STATIC_URL}}style.css" rel="stylesheet" type="text/css">
+<script src="{{ STATIC_URL}}efects.js"></script>
 </head>
 <body>
 <h1 class="titol">{% block titol %} Benvingut a Reserves de Material{% endblock %}</h1>
 {% block login %}
-<section class="login">
+<span class="login">
 
    <ul>
        {% if not user.is_authenticated %}
-       <li><a href="{% url 'signup' %}">Registret</a></li>
-       <li><a href="{% url 'ingresar' %}">Entra</a></li>
+       <a href="{% url 'signup' %}">Registret</a>
+       <a href="{% url 'ingresar' %}">Entra</a>
        {% elif user.is_authenticated %}
-       <li><a href="{% url 'logout' %}">Tenca la sessió</a></li>
+       Benvingut {{ user.username }}
+       <a href="{% url 'logout' %}">Tenca la sessió</a>
        {% endif %}
 
    </ul>
-</section>
+</span>
+
 {% endblock %}
 {% include "nav.html" %}
 {% block contingut %}{% endblock %}

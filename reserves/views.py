@@ -1,11 +1,18 @@
 from django.http import Http404
+from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from forms import ReservaForm
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
 from django.contrib.auth import logout
-from reserves.models import Reserva
+from models import Reserva
+
+
+
 
 def index(request):
     list_ult_reserves = Reserva.objects.all().order_by('data_inici')[:5]
@@ -20,15 +27,15 @@ def detail(request,  reserva_id):
     return render(request, 'reserves/detail.html', {'reserva': reserva})
 def actReserva(request):
     pass
-
+@login_required
 def espai_usuari(request):
     list_ult_reserves = Reserva.objects.filter(pk=request.user.id)
     return render(request, 'reserves/espai_usuari.html', {'list_ult_reserves': list_ult_reserves, 'nomuser': request.user.username})
 
 def logout_view(request):
-    request.session.items = []
-    request.session.modified = True
-    logout(request)
+    auth.logout(request)
+    # Redirect to a success page.
+    return HttpResponseRedirect("/reserves")
 
 def ingresar(request):
     if request.method == 'POST':
@@ -58,5 +65,22 @@ def signup(request):
     else:
         formulario = UserCreationForm()
     return render(request, 'reserves/signup.html', {'formulario': formulario})
+@login_required
+def nueva_reserva(request):
+    usuario = request.user
+    if request.method == 'POST':
+        formulario = ReservaForm(request.POST)
+
+        if formulario.is_valid():
+            formulario.save()
+            espai_usuari(request)
+        else:
+            messages.error(request, "Error")
+    else:
+        formulario = ReservaForm()
+        messages.error(request, "Error")
+
+    return render(request, 'reserves/nueva_reserva.html', {'formulario': formulario, 'usuario':usuario})
+
 
 

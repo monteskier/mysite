@@ -1,5 +1,6 @@
 from django.db import models
 import datetime
+from django.forms import ModelForm
 from django.contrib.auth.models import User
 
 class Tipus(models.Model):
@@ -37,14 +38,10 @@ class Reserva(models.Model):
     sala = models.ForeignKey(Salas)
     data_inici = models.DateField('Data inici')
     data_final = models.DateField('Data final')
-    data_sol = models.DateTimeField('Data de la solicitud')
+    data_sol = models.DateTimeField('Data solicitud', default=datetime.datetime.now())
 
     def demanat_avui(self):
         return self.data_sol.date() == datetime.date.today()
-
-
-
-
 
 
 
