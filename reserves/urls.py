@@ -8,6 +8,7 @@ urlpatterns = patterns('',
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^nueva_reserva/$', views.nueva_reserva, name='nueva_reserva'),
     url(r'^(?P<reserva_id>\d+)/$', views.detail, name='detail'),
+    url(r'^retornar/(?P<objecte_id>\d+)/$', views.retornar, name='retornar'),
     url(r'^espai_usuari/$', views.espai_usuari, name='espai_usuari'),
     url(r'^(?P<reserva_id>\d+)/actReserva/$', views.actReserva, name='actReserva'),
 )

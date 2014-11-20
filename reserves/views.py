@@ -9,7 +9,7 @@ from forms import ReservaForm
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
 from django.contrib.auth import logout
-from models import Reserva
+from models import Reserva, Objecte
 
 
 
@@ -29,8 +29,9 @@ def actReserva(request):
     pass
 @login_required
 def espai_usuari(request):
-    list_ult_reserves = Reserva.objects.filter(pk=request.user.id)
-    return render(request, 'reserves/espai_usuari.html', {'list_ult_reserves': list_ult_reserves, 'nomuser': request.user.username})
+    list_ult_reserves_pendents = Reserva.objects.filter(pk=request.user.id).filter(objecte__disponible__icontains='No')
+    list_ult_reserves_tornades = Reserva.objects.filter(pk=request.user.id).filter(objecte__disponible__icontains='Si')
+    return render(request, 'reserves/espai_usuari.html', {'list_ult_reserves_pendents': list_ult_reserves_pendents, 'list_ult_reserves_tornades': list_ult_reserves_tornades, 'nomuser': request.user.username})
 
 def logout_view(request):
     auth.logout(request)
@@ -71,16 +72,23 @@ def nueva_reserva(request):
     if request.method == 'POST':
         formulario = ReservaForm(request.POST)
 
+
         if formulario.is_valid():
             formulario.save()
             espai_usuari(request)
         else:
             messages.error(request, "Error")
+            return render(request, 'reserves/nueva_reserva.html', {'formulario': formulario, 'usuario':usuario})
     else:
         formulario = ReservaForm()
+        formulario.fields['objecte'].queryset = Objecte.objects.filter(disponible='Si')
         messages.error(request, "Error")
 
     return render(request, 'reserves/nueva_reserva.html', {'formulario': formulario, 'usuario':usuario})
 
+def retornar(request, objecte_id):
 
-
+    obj = Objecte.objects.get(pk=objecte_id)
+    obj.disponible = 'Si'
+    obj.save()
+    return espai_usuari(request)

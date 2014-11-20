@@ -5,11 +5,20 @@
 {% if list_ult_reserves %}
     <h2>Les teves Reserves:</h2>
     <ul>
-    {% for reserva in list_ult_reserves %}
+    <p>Reserves Pendents</p>
+    {% for reserva in list_ult_reserves_pendents %}
+
+        <li><a href="/reserves/{{ reserva.id }}/">{{ reserva.objecte }}</a> del {{reserva.data_inici}} fins {{reserva.data_final}} <a href="/reserves/retornar/{{ reserva.objecte.id }}/">Retornar</a></li>
+
+    {% endfor %}
+
+    <p>Historial</p>
+        {% for reserva in list_ult_reserves_tornades %}
 
         <li><a href="/reserves/{{ reserva.id }}/">{{ reserva.objecte }}</a> del {{reserva.data_inici}} fins {{reserva.data_final}}</li>
 
     {% endfor %}
+
     </ul>
 {% else %}
     <p>No hi han reserves actualment.</p>

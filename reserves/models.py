@@ -34,7 +34,7 @@ class Salas(models.Model):
 
 class Reserva(models.Model):
     objecte = models.ForeignKey(Objecte)
-    user = models.ForeignKey(User, unique=True)
+    user = models.ForeignKey(User, unique=False)
     sala = models.ForeignKey(Salas)
     data_inici = models.DateField('Data inici')
     data_final = models.DateField('Data final')
