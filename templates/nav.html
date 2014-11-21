@@ -2,7 +2,7 @@
 <nav>
         <ul>
             <li><a href="{% url 'index' %} "><div id="item-menu">Inici</div></a></li>
-            <li><div id="item-menu">Objectes Disponibles</div></li>
+
             {% if user.is_authenticated %}
             <li><a href="{% url 'nueva_reserva' %}"><div id="item-menu">Nova Reserva</div></a></li>
             <li><a href="{% url 'espai_usuari' %}"><div id="item-menu">Reserves de {{user.username}}</div></a></li>

@@ -80,8 +80,11 @@ p{
     border-bottom-color: #316680;
     color:grey;
 }
-ul li p {
+ul li p a{
     font-family: Verdana, Arial, Sans-Serif;
+}
+a{
+    color:black;
 }
 
 ul.taula li { background: #A1C6F0; width:80%; text-decoration: none;}
