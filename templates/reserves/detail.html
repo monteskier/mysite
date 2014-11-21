@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 <h1>{{ reserva.objecte }}</h1>
 {% block contingut %}
-<ul>
-    <li>{{ reserva.interessat }}</li>
-    <li>{{ reserva.sala }}</li>
-    <li>{{ reserva.data_inici }}</li>
-    <li>{{ reserva.data_final }}</li>
-    <li>{{ reserva.data_sol }}</li>
+<ul class="taula">
+    <li>Usuari: {{ reserva.user }}</li>
+    <li>Ubicació: {{ reserva.sala }}</li>
+    <li>Data d'inici: {{ reserva.data_inici }}</li>
+    <li>Data final:{{ reserva.data_final }}</li>
+    <li>Data de la solicitud: {{ reserva.data_sol }}</li>
 </ul>
 {% endblock %}

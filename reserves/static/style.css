@@ -50,15 +50,24 @@ nav ul li a {
     font-family: Verdana, Arial, Sans-Serif;
 }
 h1.titol{
+
+    font-size:15px;
+    font-family:Arial;
     text-align:center;
 
 }
 
 footer{
     text-align=center;
-    float=bottom;
-    margin-min-top:600px;
+    position:absolute;
+    bottom:0;
+
     width:100%;
+    background-color:#417690;
+    color:white;
+    font-family:Arial;
+    text-align:center;
+    border-radius:5px;
 
 }
 .login{
@@ -67,4 +76,13 @@ footer{
     margin-right:10px;
     float:right;
 }
+p{
+    border-bottom-color: #316680;
+    color:grey;
+}
+ul li p {
+    font-family: Verdana, Arial, Sans-Serif;
+}
 
+ul.taula li { background: #A1C6F0; width:80%; text-decoration: none;}
+ul.taula li:nth-child(odd) { background:#6196F0; width:80%; text-decoration: none; }

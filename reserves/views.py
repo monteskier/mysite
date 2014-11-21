@@ -15,7 +15,7 @@ from models import Reserva, Objecte
 
 
 def index(request):
-    list_ult_reserves = Reserva.objects.all().order_by('data_inici')[:5]
+    list_ult_reserves = Reserva.objects.all().order_by('data_inici')
     context = {'list_ult_reserves': list_ult_reserves}
     return render(request, 'reserves/index.html', context)
 
@@ -27,11 +27,13 @@ def detail(request,  reserva_id):
     return render(request, 'reserves/detail.html', {'reserva': reserva})
 def actReserva(request):
     pass
+
 @login_required
 def espai_usuari(request):
-    list_ult_reserves_pendents = Reserva.objects.filter(pk=request.user.id).filter(objecte__disponible__icontains='No')
-    list_ult_reserves_tornades = Reserva.objects.filter(pk=request.user.id).filter(objecte__disponible__icontains='Si')
-    return render(request, 'reserves/espai_usuari.html', {'list_ult_reserves_pendents': list_ult_reserves_pendents, 'list_ult_reserves_tornades': list_ult_reserves_tornades, 'nomuser': request.user.username})
+
+    llista_pendent =  Reserva.objects.all().filter(user__id__icontains=request.user.id).filter(objecte__disponible__icontains='No')
+    llista_tornades = Reserva.objects.filter(user__id__icontains=request.user.id).filter(objecte__disponible__icontains='Si')
+    return render(request, 'reserves/espai_usuari.html', {'llista_pendent': llista_pendent, 'llista_tornades': llista_tornades,'nomuser': request.user.username})
 
 def logout_view(request):
     auth.logout(request)
@@ -74,11 +76,14 @@ def nueva_reserva(request):
 
 
         if formulario.is_valid():
+            id = request.POST['objecte']
+            obj=Objecte.objects.get(pk=id)
+            obj.disponible = 'No'
+            obj.save()
             formulario.save()
-            espai_usuari(request)
+            return espai_usuari(request)
         else:
             messages.error(request, "Error")
-            return render(request, 'reserves/nueva_reserva.html', {'formulario': formulario, 'usuario':usuario})
     else:
         formulario = ReservaForm()
         formulario.fields['objecte'].queryset = Objecte.objects.filter(disponible='Si')
@@ -91,4 +96,15 @@ def retornar(request, objecte_id):
     obj = Objecte.objects.get(pk=objecte_id)
     obj.disponible = 'Si'
     obj.save()
+    accio = "Reserva Retornada Correctament"
     return espai_usuari(request)
+
+def eliminar(request, reserva_id):
+
+    res = Reserva.objects.get(pk=reserva_id)
+    res.delete()
+    accio = "Reserva Eliminada Correctament"
+    return espai_usuari(request)
+
+def events(request, accio):
+    pass
