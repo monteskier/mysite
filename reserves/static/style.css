@@ -1,15 +1,20 @@
 
     nav{
-    width:100%;
+    width:80%;
+    float:left;
     background:# f0f0f0;
 }
-
+#titol{
+    border-radius: 5px;
+    background-color: #417690;
+}
 nav ul {
 
     overflow: hidden;
     border-bottom-color: #417690;
-    border-bottom-width: 100%;
+    border-bottom-width: 80%;
     border-bottom-style: solid;
+    border-top-style: solid;
     border-radius:10px;
 
 }
@@ -18,11 +23,13 @@ nav ul {
     height: 60px;
     width: 100px;
     opacity: 0.8;
+    margin-top:5px;
     border-radius: 5px;
     background-color: #417690;
     text-align: center;
     font-family: Verdana, Arial, Sans-Serif;
     opacity: 0,5;
+    margin-bottom:5px;
     color:white;
     -webkit-transition: 0.5;
     -transition:2s;
@@ -53,7 +60,10 @@ h1.titol{
 
     font-size:15px;
     font-family:Arial;
+    color:white;
     text-align:center;
+
+
 
 }
 
@@ -74,7 +84,23 @@ footer{
     font-size:12px;
     font-family: Verdana, Arial, Sans-Serif;
     margin-right:10px;
+    margin-top:5px;
+    margin-bottom:5px;
     float:right;
+}
+#login{
+    position:inherit;
+    overflow: hidden;
+    margin-right:0px;
+    margin-top:25px;
+    width:20%;
+    min-height: 72px;
+    overflow: hidden;
+    border-top-color: #417690;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-radius:10px;
 }
 p{
     border-bottom-color: #316680;
@@ -82,10 +108,36 @@ p{
 }
 ul li p a{
     font-family: Verdana, Arial, Sans-Serif;
+    padding:10px;
 }
 a{
-    color:black;
-}
 
-ul.taula li { background: #A1C6F0; width:80%; text-decoration: none;}
-ul.taula li:nth-child(odd) { background:#6196F0; width:80%; text-decoration: none; }
+}
+p.alerta{
+    color:red;
+}
+.tipologies{
+    font-size:15px;
+    font-family:Arial;
+    text-align:center;
+}
+.retorn{
+    font-family:Arial;
+    text-align:center;
+    font-size:15px;
+    border-radius:5px;
+    background-color:green;
+    color:white;
+
+}
+.eliminar{
+    font-family:Arial;
+    text-align:center;
+    font-size:15px;
+    border-radius:5px;
+    background-color:red;
+    color:white;
+
+}
+ul.taula li { background: #A1C6F0; width:80%; text-decoration: none; list-style:none;}
+ul.taula li:nth-child(odd) { background:#6196F0; width:80%; text-decoration: none; list-style:none; }

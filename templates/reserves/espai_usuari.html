@@ -8,7 +8,7 @@
         <h2>Les teves Reserves:</h2>
         <ul class="taula">
         {% for reserva in llista_pendent %}
-            <li><a href="/reserves/{{ reserva.id }}/">{{ reserva.objecte }}</a> del {{reserva.data_inici}} fins {{reserva.data_final}} <a href="/reserves/retornar/{{ reserva.objecte.id }}/">Retornar</a></li>
+            <li><a href="/reserves/{{ reserva.id }}/">{{ reserva.objecte }}</a> del {{reserva.data_inici}} fins {{reserva.data_final}} <a href="/reserves/retornar/{{ reserva.objecte.id }}/"><span class="retorn">Retornar</span></a></li>
         {% endfor %}
         </ul>
         {% else %}
@@ -17,7 +17,7 @@
     <p>Històric de reserves:</p>
         <ul class="taula">
     {% for reserva in llista_tornades %}
-            <li>{{ reserva.objecte }} del {{reserva.data_inici}} fins {{reserva.data_final}} <a href="/reserves/eliminar/{{ reserva.id }}/">Eliminar</a></li>
+            <li>{{ reserva.objecte }} del {{reserva.data_inici}} fins {{reserva.data_final}} <a href="/reserves/eliminar/{{ reserva.id }}/"><span class="eliminar">Eliminar</span></a></li>
         {% endfor %}
         </ul>
 

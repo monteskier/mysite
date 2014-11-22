@@ -7,24 +7,28 @@
 <script src="{{ STATIC_URL}}efects.js"></script>
 </head>
 <body>
-<h1 class="titol">{% block titol %} Benvingut a Reserves de Material{% endblock %}</h1>
-{% block login %}
-<span class="login">
-
-   <ul>
-       {% if not user.is_authenticated %}
-       <a href="{% url 'signup' %}">Registret</a>
-       <a href="{% url 'ingresar' %}">Entra</a>
-       {% elif user.is_authenticated %}
-       Benvingut {{ user.username }}
-       <a href="{% url 'logout' %}">Tenca la sessió</a>
-       {% endif %}
-
-   </ul>
-</span>
-
-{% endblock %}
+<div id="titol">
+    <h1 class="titol">{% block titol %} Benvingut a Reserves de Material{% endblock %}</h1>
+</div>
 {% include "nav.html" %}
+{% block login %}
+<div id="login">
+    <span class="login">
+
+       <ul>
+           {% if not user.is_authenticated %}
+           <a href="{% url 'signup' %}">Registret</a>
+           <a href="{% url 'ingresar' %}">Entra</a>
+           {% elif user.is_authenticated %}
+           Benvingut {{ user.username }}
+           <a href="{% url 'logout' %}">Tenca la sessió</a>
+           {% endif %}
+
+       </ul>
+    </span>
+</div>
+<br>
+{% endblock %}
 {% block contingut %}{% endblock %}
 {% block peu %}<footer>Programador i desenvolupador : Joaquim Montoliu Aguilera en data 20/11/2014</footer>{% endblock %}
 

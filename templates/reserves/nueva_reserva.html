@@ -1,18 +1,24 @@
 {% extends 'base.html' %}
-{% block titol %}<h1  class="titol">Nova Reserva {{ nomuser }}</h1>{% endblock %}
+{% block titol %}<h1  class="titol">Nova Reserva {{ request.user.username }}</h1>{% endblock %}
 {% block contingut %}
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<!--<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css"> !-->
+<link href="{{ STATIC_URL}}jquery.datetimepicker.css" rel="stylesheet" type="text/css">
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script src="{{ STATIC_URL}}jquery.datetimepicker.js"></script>
 <script>
     $(document).ready(function(){
 
         $('#id_user option:eq({{usuario.id}})').prop('selected', true);
         //$('#id_user').prop('disabled',true);
 
-        $('#id_data_inici').datepicker({ dateFormat: 'dd/mm/yy' });
-        $('#id_data_final').datepicker({ dateFormat: 'dd/mm/yy' });
+        $('#id_data_inici').datetimepicker({
+             format:'d/m/Y H:i',
+        });
+        $('#id_data_final').datetimepicker({
+            format:'d/m/Y H:i',
+
+        });
 
 
 
@@ -36,6 +42,9 @@
                 <strong>{{ error|escape }}</strong>
             </div>
         {% endfor %}
+    {% endif %}
+    {%if error != 0 %}
+            <p class="alerta">Exiteix una reserva del mateix element amb sol·lapació de dates </p>
     {% endif %}
 
 

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block contingut %}
 {% if list_ult_reserves %}
-    <h2>Reserves Actuals:</h2>
+    <span class="tipologies">Reserves Actuals:</span>
     <ul class="taula">
     {% for reserva in list_ult_reserves %}
         <li><a href="/reserves/{{ reserva.id }}/">{{ reserva.objecte }}</a> del {{reserva.data_inici}} fins {{reserva.data_final}}</li>
@@ -9,5 +9,16 @@
     </ul>
 {% else %}
     <p>No hi han reserves actualment.</p>
+{% endif %}
+
+{% if list_old %}
+    <span class="tipologies">Reserves pasades:</span>
+    <ul class="taula">
+    {% for reserva in list_old %}
+        <li><a href="/reserves/{{ reserva.id }}/">{{ reserva.objecte }}</a> del {{reserva.data_inici}} fins {{reserva.data_final}}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No hi ha res al historic.</p>
 {% endif %}
 {% endblock %}
