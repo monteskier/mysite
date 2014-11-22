@@ -139,5 +139,5 @@ p.alerta{
     color:white;
 
 }
-ul.taula li { background: #A1C6F0; width:80%; text-decoration: none; list-style:none;}
-ul.taula li:nth-child(odd) { background:#6196F0; width:80%; text-decoration: none; list-style:none; }
+ul.taula li { background: grey; width:80%; text-decoration: none; list-style:none;}
+ul.taula li:nth-child(odd) { background:lightgrey; width:80%; text-decoration: none; list-style:none; }
